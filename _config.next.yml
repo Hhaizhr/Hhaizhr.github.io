@@ -1,0 +1,81 @@
+# ===============================================================
+# NexT Theme Configuration
+# ===============================================================
+
+# ---------------------------------------------------------------
+# Scheme Settings
+# Options: Muse | Mist | Pisces | Gemini
+# ---------------------------------------------------------------
+scheme: Gemini
+
+# Dark Mode
+darkmode: true
+
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+menu:
+  home: / || fa fa-home
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-categories
+  archives: /archives/ || fa fa-archive
+  about: /about/ || fa fa-user
+
+menu_settings:
+  icons: true
+  badges: true
+
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+sidebar:
+  position: left
+  width: 280
+  display: post
+  padding: 18
+  offset: 12
+
+# ---------------------------------------------------------------
+# Post & Codeblock Settings
+# ---------------------------------------------------------------
+codeblock:
+  theme:
+    light: default
+    dark: stackoverflow-dark
+  copy_button:
+    enable: true
+    style: mac
+
+reading_progress:
+  enable: true
+  start_at: top
+  position: top
+  reversed: false
+  color: "#37c6c0"
+  height: 3px
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+# ---------------------------------------------------------------
+# Local Search
+# ---------------------------------------------------------------
+local_search:
+  enable: true
+  trigger: auto
+  top_n_per_article: 1
+  unescape: false
+  preload: false
+
+# ---------------------------------------------------------------
+# Footer Settings
+# ---------------------------------------------------------------
+footer:
+  since: 2026
+  icon:
+    name: fa fa-heart
+    animated: true
+    color: "#ff0000"
+  powered: true
