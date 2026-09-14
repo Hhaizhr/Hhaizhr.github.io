@@ -7,13 +7,13 @@ title: 我的技术博客
 subtitle: '学无止境，行以致远'
 description: '记录学习历程、技术沉淀与经验分享'
 keywords: '技术博客, 编程, 学习笔记, 架构, 算法'
-author: 博主
+author: Hhaizhr
 language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://username.github.io
+url: https://hhaizhr.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
