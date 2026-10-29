@@ -1,0 +1,14 @@
+<div class="post-breadcrumb"><a href="<%- url_for('/archives/') %>">← 文章</a></div>
+<article class="article-layout">
+  <div class="article-main">
+    <header class="article-header">
+      <div class="post-meta"><time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY-MM-DD') %></time><% page.categories.each(category => { %><a href="<%- url_for(category.path) %>"><%= category.name %></a><% }) %></div>
+      <h1><%= page.title %></h1>
+      <div class="article-byline"><span><%= config.author %></span><span>·</span><span><%= garden_minutes(page.content) %> 分钟阅读</span></div>
+    </header>
+    <div class="prose article-content"><%- page.content %></div>
+    <footer class="article-footer"><div class="tag-list"><% page.tags.each(tag => { %><a href="<%- url_for(tag.path) %>">#<%= tag.name %></a><% }) %></div></footer>
+    <% if (page.prev || page.next) { %><nav class="post-navigation" aria-label="相邻文章"><% if (page.prev) { %><a href="<%- url_for(page.prev.path) %>"><small>← 更新一篇</small><span><%= page.prev.title %></span></a><% } %><% if (page.next) { %><a href="<%- url_for(page.next.path) %>"><small>更早一篇 →</small><span><%= page.next.title %></span></a><% } %></nav><% } %>
+  </div>
+  <% const contents = toc(page.content, { list_number: false }); if (contents) { %><aside class="article-sidebar" aria-label="文章目录"><div class="toc-panel"><h2>目录</h2><%- contents %></div></aside><% } %>
+</article>

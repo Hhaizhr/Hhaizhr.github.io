@@ -1,0 +1,15 @@
+<header id="top" class="site-header">
+  <a class="brand" href="<%- url_for('/') %>" aria-label="<%= config.author %> 的博客首页">
+    <img class="brand-avatar" src="<%- url_for('/images/nova-avatar.jpg') %>" alt="" width="32" height="32">
+    <span><%= config.author %></span>
+  </a>
+  <nav class="main-nav" aria-label="主要导航">
+    <% [['/archives/', '文章'], ['/categories/', '分类'], ['/tags/', '标签'], ['/about/', '关于']].forEach(([path, label]) => { const active = path === '/archives/' ? is_archive() || is_post() : ('/' + page.path).startsWith(path); %>
+      <a href="<%- url_for(path) %>" <%- active ? 'class="active" aria-current="page"' : '' %>><%= label %></a>
+    <% }) %>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-button" type="button" data-open-search aria-label="搜索文章"><%- garden_icon('search') %></button>
+    <button class="icon-button theme-toggle" type="button" aria-label="切换深浅主题"><span class="sun-icon"><%- garden_icon('sun') %></span><span class="moon-icon"><%- garden_icon('moon') %></span></button>
+  </div>
+</header>

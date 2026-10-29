@@ -1,0 +1,7 @@
+<section class="page-heading"><h1><%= page.tag ? '#' + page.tag : page.category || '文章归档' %></h1></section>
+<div class="archive-list">
+  <% let year = ''; page.posts.each(post => { const current = date(post.date, 'YYYY'); if (current !== year) { year = current; %><h2 class="archive-year"><%= year %></h2><% } %>
+  <article class="archive-item"><time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'MM-DD') %></time><h3><a href="<%- url_for(post.path) %>"><%= post.title %></a></h3></article>
+  <% }) %>
+</div>
+<% if (page.total > 1) { %><nav class="pagination" aria-label="文章分页"><%- paginator({ prev_text: '← 上一页', next_text: '下一页 →' }) %></nav><% } %>

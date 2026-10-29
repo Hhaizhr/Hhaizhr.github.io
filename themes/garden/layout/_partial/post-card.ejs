@@ -1,0 +1,8 @@
+<article class="post-item">
+  <time class="post-date" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'MM-DD') %><span><%= date(post.date, 'YYYY') %></span></time>
+  <div class="post-summary">
+    <h3><a href="<%- url_for(post.path) %>"><%= post.title %></a></h3>
+    <p><%= truncate(strip_html(post.excerpt || post.content), { length: 110 }) %></p>
+    <% if (post.tags.length) { %><div class="tag-list"><% post.tags.each(tag => { %><a href="<%- url_for(tag.path) %>">#<%= tag.name %></a><% }) %></div><% } %>
+  </div>
+</article>

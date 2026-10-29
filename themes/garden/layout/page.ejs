@@ -1,0 +1,6 @@
+<% const taxonomy = page.type === 'tags' || page.type === 'categories'; %>
+<section class="page-heading"><h1><%= page.type === 'tags' ? '标签' : page.type === 'categories' ? '分类' : page.title %></h1></section>
+<% if (taxonomy) { const terms = page.type === 'tags' ? site.tags : site.categories; %>
+  <div class="taxonomy-list"><% terms.each(term => { %><a href="<%- url_for(term.path) %>"><span><%= term.name %></span><small><%= term.posts.length %> 篇</small></a><% }) %></div>
+  <% if (!terms.length) { %><p class="empty-state">暂无<%= page.type === 'tags' ? '标签' : '分类' %>。</p><% } %>
+<% } else { %><div class="prose about-content"><%- page.content %></div><% } %>
