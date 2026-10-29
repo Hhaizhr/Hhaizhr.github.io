@@ -7,9 +7,9 @@
   <meta name="description" content="<%= page.description || config.description %>">
   <title><%= page.title ? page.title + ' · ' : '' %><%= config.title %></title>
   <link rel="icon" type="image/jpeg" href="<%- url_for('/images/nova-avatar.jpg') %>">
-  <link rel="stylesheet" href="<%- url_for('/css/garden.css') %>">
+  <link rel="stylesheet" href="<%- url_for('/css/main.css') %>">
   <script>document.documentElement.dataset.theme='dark';try{document.documentElement.dataset.theme=localStorage.getItem('nova-theme')||'dark'}catch(e){}</script>
-  <script src="<%- url_for('/js/garden.js') %>" defer></script>
+  <script src="<%- url_for('/js/main.js') %>" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -22,8 +22,8 @@
     </footer>
   </div>
   <dialog id="search-dialog" aria-labelledby="search-title" data-source="<%- url_for('/search.xml') %>">
-    <div class="search-heading"><h2 id="search-title">搜索文章</h2><button type="button" class="icon-button" data-close-search aria-label="关闭搜索"><%- garden_icon('close') %></button></div>
-    <label class="search-input"><%- garden_icon('search') %><input id="search-input" type="search" placeholder="搜索文章、技术或关键词…" autocomplete="off"></label>
+    <div class="search-heading"><h2 id="search-title">搜索文章</h2><button type="button" class="icon-button" data-close-search aria-label="关闭搜索"><%- nova_icon('close') %></button></div>
+    <label class="search-input"><%- nova_icon('search') %><input id="search-input" type="search" placeholder="搜索文章、技术或关键词…" autocomplete="off"></label>
     <div id="search-results" class="search-results" aria-live="polite"><p>输入关键词，寻找一篇文章。</p></div>
     <div class="search-hint"><span>本地全文搜索</span><span><kbd>Esc</kbd> 关闭</span></div>
   </dialog>

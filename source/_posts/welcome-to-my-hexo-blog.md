@@ -1,52 +1,68 @@
 ---
-title: 基于 Hexo & NexT 搭建个人技术博客之旅
+title: 用 Hexo 搭建个人技术博客
 date: 2026-09-14 20:15:00
+updated: 2026-10-29
 tags:
   - Hexo
-  - NexT
   - 博客搭建
 categories:
   - 经验总结
 ---
 
-欢迎来到我的新博客！这里是我记录技术成长、沉淀知识与分享经验的新起点。
+记录这个博客的项目结构、写作方式和发布流程。
 
 <!-- more -->
 
-## 为什么选择 Hexo？
+## 当前使用的方案
 
-在对比了各类博客方案之后，我最终选择了 **Hexo + NexT** 主题：
+博客由 **Hexo** 生成静态页面，主题是仓库里的 **nova 自定义主题**。文章使用 Markdown 编写，GitHub Actions 负责构建和发布到 GitHub Pages。
 
-1. **渲染速度极快**：基于 Node.js 驱动，静态页面秒级生成。
-2. **专注于 Markdown**：无需操作繁琐后台，用你最习惯的 Markdown 编辑器写作。
-3. **生态丰富**：NexT 主题经过多年打磨，黑白极简的卡片风格与阅读体验非常适合技术博文。
-4. **自动化部署**：搭配 GitHub Actions，每次 `git push` 即可全自动构建并发布到 GitHub Pages。
+页面保留了文章归档、分类、标签、本地全文搜索、深浅主题切换和文章目录。主题样式与交互代码都在仓库内维护，不依赖外部主题包。
 
----
+## 项目结构
 
-## 常用命令速查
-
-在日常写作中，Hexo 的常用管理命令如下：
-
-```bash
-# 新建一篇文章
-$ hexo new post "文章名称"
-
-# 本地启动预览（访问 http://localhost:4000）
-$ hexo server
-
-# 生成静态文件
-$ hexo generate
-
-# 清理缓存与已生成的文件
-$ hexo clean
+```text
+source/          文章和独立页面
+themes/nova/     当前主题的模板、样式、脚本和头像
+scaffolds/       新建文章、页面和草稿时使用的模板
+test/           生成页面的检查脚本
+_config.yml     博客信息、网址、主题和搜索配置
 ```
 
----
+`node_modules/` 是安装的依赖，`public/` 是生成的网页，`db.json` 是 Hexo 缓存。这些文件由工具生成，已被 Git 忽略。
+
+## 写作与本地预览
+
+首次使用时安装依赖：
+
+```bash
+npm ci
+```
+
+新建文章并启动预览：
+
+```bash
+npx hexo new post "文章标题"
+npm run server
+```
+
+浏览器打开 `http://localhost:4000`。文章放在 `source/_posts/` 中，分类和标签由文章头部的 `categories`、`tags` 字段生成。
+
+## 构建与发布
+
+提交前执行：
+
+```bash
+npm run check:theme
+```
+
+这个命令先生成网页，再检查页面标题、资源路径、站内链接和目录锚点。需要清理生成文件和缓存时，执行 `npm run clean`。
+
+推送到 `main` 或 `master` 后，GitHub Actions 会安装锁定的依赖、运行构建检查，并把 `public/` 发布到 GitHub Pages。具体流程在 `.github/workflows/deploy.yml` 中。
 
 ## 代码高亮示例
 
-NexT 主题内置了优雅的代码高亮与一键复制功能：
+Markdown 代码块由 Hexo 生成语法高亮，当前主题负责字体、行号和配色：
 
 ```python
 def fibonacci(n: int) -> int:
@@ -61,13 +77,3 @@ def fibonacci(n: int) -> int:
 if __name__ == "__main__":
     print(f"Fibonacci(10) = {fibonacci(10)}")
 ```
-
----
-
-## 下一步计划
-
-- [x] 完成 Hexo + NexT 基础环境搭建与本地调试
-- [ ] 关联 GitHub 远程仓库并配置 GitHub Actions 自动部署
-- [ ] 撰写系列技术文章，保持每周学习输出
-
-*“千里之行，始于足下。” 让我们在这里共同见证技术的积累与突破！*

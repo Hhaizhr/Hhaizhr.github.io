@@ -1,6 +1,6 @@
 # Nova小新 · 技术手记
 
-基于 Hexo 的个人博客，使用仓库内的 `garden` 主题，发布到 GitHub Pages。
+基于 Hexo 的个人博客，使用仓库内的 `nova` 主题，发布到 GitHub Pages。
 
 ## 本地使用
 
@@ -20,10 +20,12 @@ npm run clean               # 清理生成文件和缓存
 ## 文件位置
 
 - `source/`：文章、关于页、分类和标签页。
-- `themes/garden/`：当前使用的页面模板、样式、搜索和主题切换代码。
-- `themes/garden/source/images/nova-avatar.jpg`：导航头像与网站图标。
+- `themes/nova/`：当前使用的页面模板、样式、搜索和主题切换代码。
+- `themes/nova/source/images/nova-avatar.jpg`：导航头像与网站图标。
 - `_config.yml`：博客名称、作者、网址、主题及搜索配置。
 - `scaffolds/`：Hexo 新建文章、页面和草稿的模板。
 - `test/check-theme.cjs`：生成页面的检查脚本，GitHub Actions 构建时也会运行。
 
 推送到 `main` 或 `master` 后，`.github/workflows/deploy.yml` 自动构建并发布。`node_modules/`、`public/` 和 `db.json` 是已被 Git 忽略的本地产物。
+
+构建会先清理旧输出再重新生成，避免删除或改名后的页面、样式继续留在 `public/`。

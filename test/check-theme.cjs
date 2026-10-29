@@ -14,8 +14,8 @@ for (const file of files) {
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${file}: expected one page heading`);
   assert(html.includes('id="search-dialog"'), `${file}: missing search dialog`);
   for (const match of html.matchAll(/(?:href|src)="([^"<>]+)"/g)) {
-    const url = new URL(match[1], 'https://garden.test/' + file);
-    if (url.origin !== 'https://garden.test') continue;
+    const url = new URL(match[1], 'https://site.test/' + file);
+    if (url.origin !== 'https://site.test') continue;
     const pathname = decodeURIComponent(url.pathname);
     const target = path.join(root, pathname, pathname.endsWith('/') ? 'index.html' : '');
     assert(fs.existsSync(target), `${file}: broken link ${match[1]}`);

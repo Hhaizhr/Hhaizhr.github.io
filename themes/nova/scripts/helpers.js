@@ -7,11 +7,11 @@ const icons = {
   close: '<path d="m6 6 12 12M6 18 18 6"/>',
 };
 
-hexo.extend.helper.register('garden_icon', function(name) {
+hexo.extend.helper.register('nova_icon', function(name) {
   return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (icons[name] || '') + '</svg>';
 });
 
-hexo.extend.helper.register('garden_minutes', function(content) {
+hexo.extend.helper.register('nova_minutes', function(content) {
   const text = this.strip_html(content || '');
   return Math.max(1, Math.ceil(text.length / 400));
 });

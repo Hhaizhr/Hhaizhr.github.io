@@ -1,10 +1,10 @@
 <section class="home-intro">
   <h1>技术手记</h1>
-  <p>记录开发实践、技术探索与学习笔记。</p>
+  <p><%= config.description %></p>
 </section>
 <section id="writing" class="writing-section" aria-labelledby="writing-title">
   <div class="section-heading"><h2 id="writing-title">最新文章</h2><a href="<%- url_for('/archives/') %>">归档 <span aria-hidden="true">↗</span></a></div>
-  <div class="post-list"><% page.posts.each(post => { %><%- partial('_partial/post-card', { post }) %><% }) %></div>
+  <div class="post-list"><% page.posts.each(post => { %><%- partial('_partial/post-item', { post }) %><% }) %></div>
   <% if (!page.posts.length) { %><p class="empty-state">暂时还没有文章。</p><% } %>
   <% if (page.total > 1) { %><nav class="pagination" aria-label="文章分页"><%- paginator({ prev_text: '← 上一页', next_text: '下一页 →' }) %></nav><% } %>
 </section>
